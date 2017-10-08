@@ -365,6 +365,7 @@ def CSV_to_chunks_of_dataframes(c, chunksize=2 ** 20, **kwargs):
     if len(first) == 1000:
         rest = csv_to_dataframe(
             c, chunksize=chunksize, skiprows=1000, **kwargs)
+        rest = [pd.DataFrame(chunk) for chunk in rest]
     else:
         rest = []
 
